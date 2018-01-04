@@ -1,6 +1,7 @@
 def numbers_to_words(number)
 
   numbers_name = {
+    1000 => "thousand", 100 => "hundred",
     90 => "ninety",   80 => "eighty",   70 => "seventy",
     60 => "sixty",    50 => "fifty",    40 => "forty",
     30 => "thirty",   20 => "twenty",   19 => "nineteen",
@@ -17,6 +18,10 @@ def numbers_to_words(number)
     numbers_name[number]
   elsif number < 0
     return "enter a positive number"
+  elsif number.to_s.length == 2
+    tens = numbers_name[number - (number % 10)]
+    singles = numbers_name[number % 10]
+    tens + " " + singles
   end
 
 end
