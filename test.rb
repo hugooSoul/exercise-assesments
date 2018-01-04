@@ -44,6 +44,20 @@ def numbers_to_words(number)
       tens = ""
     end
     thousand + " " + hundred + " " + tens + " " + singles
+  elsif number.to_s.length == 5
+    get_thousand = number/1000
+    left = number - (get_thousand*1000)
+    thousand = numbers_name[get_thousand] + " thousand"
+    hundred = numbers_name[left / 100] + " hundred"
+    tens = numbers_name[number - ((number / 100) * 100) - (number % 10)]
+    singles = numbers_name[number % 10]
+    if hundred == "zero hundred"
+      hundred = ""
+    end
+    if tens == "zero"
+      tens = ""
+    end
+    thousand + " " + hundred + " " + tens + " " + singles
   end
 
 end
@@ -53,5 +67,4 @@ puts numbers_to_words(42)
 puts numbers_to_words(601)
 puts numbers_to_words(2001)
 puts numbers_to_words(1999)
-#puts numbers_to_words(17999)
-#puts numbers_to_words(26999)
+puts numbers_to_words(19999)
