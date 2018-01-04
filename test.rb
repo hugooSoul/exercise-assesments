@@ -45,19 +45,23 @@ def numbers_to_words(number)
     end
     thousand + " " + hundred + " " + tens + " " + singles
   elsif number.to_s.length == 5
-    get_thousand = number/1000
-    left = number - (get_thousand*1000)
-    thousand = numbers_name[get_thousand] + " thousand"
-    hundred = numbers_name[left / 100] + " hundred"
-    tens = numbers_name[number - ((number / 100) * 100) - (number % 10)]
-    singles = numbers_name[number % 10]
-    if hundred == "zero hundred"
-      hundred = ""
+    if number >= 20000
+      return "Sorry, I'm not able to translate this number"
+    else
+      get_thousand = number/1000
+      left = number - (get_thousand*1000)
+      thousand = numbers_name[get_thousand] + " thousand"
+      hundred = numbers_name[left / 100] + " hundred"
+      tens = numbers_name[number - ((number / 100) * 100) - (number % 10)]
+      singles = numbers_name[number % 10]
+      if hundred == "zero hundred"
+        hundred = ""
+      end
+      if tens == "zero"
+        tens = ""
+      end
+      thousand + " " + hundred + " " + tens + " " + singles
     end
-    if tens == "zero"
-      tens = ""
-    end
-    thousand + " " + hundred + " " + tens + " " + singles
   end
 
 end
