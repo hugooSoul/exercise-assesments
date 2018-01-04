@@ -26,6 +26,9 @@ def numbers_to_words(number)
     hundred = numbers_name[number / 100] + " hundred"
     tens = numbers_name[number - ((number / 100) * 100) - (number % 10)]
     singles = numbers_name[number % 10]
+    if tens == "zero"
+      tens = "and"
+    end
     hundred + " " + tens + " " + singles
   end
 
@@ -33,7 +36,7 @@ end
 
 puts numbers_to_words(7)
 puts numbers_to_words(42)
-puts numbers_to_words(598)
+puts numbers_to_words(601)
 #puts numbers_to_words(2001)
 #puts numbers_to_words(1999)
 #puts numbers_to_words(17999)
