@@ -22,6 +22,11 @@ def numbers_to_words(number)
     tens = numbers_name[number - (number % 10)]
     singles = numbers_name[number % 10]
     tens + " " + singles
+  elsif number.to_s.length == 3
+    hundred = numbers_name[number / 100] + " hundred"
+    tens = numbers_name[number - ((number / 100) * 100) - (number % 10)]
+    singles = numbers_name[number % 10]
+    hundred + " " + tens + " " + singles
   end
 
 end
